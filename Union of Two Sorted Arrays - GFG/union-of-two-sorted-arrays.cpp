@@ -35,13 +35,13 @@ class Solution{
             }
         }
         while(i<n){ 
-            if(res[res.size()-1]!=arr1[i])
-            res.push_back(arr1[i]);
+            if(res[k-1]!=arr1[i])
+                {res.push_back(arr1[i]);k++;}
             i++;
         }
         while(j<m){ 
-            if(res[res.size()-1]!=arr2[j]) 
-            res.push_back(arr2[j]);        
+            if(res[k-1]!=arr2[j]) 
+            {res.push_back(arr2[j]);        k++;}
             j++;
         }
         return res;
