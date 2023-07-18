@@ -17,14 +17,14 @@ public:
             mp[s[i]]++;
            // if(s[i]=='l'||s[i]=='o') mp[s[i]]++;
         }
-    //    mp['l']=mp['l']/2;
-     //   mp['o']= mp['o']/2;
+       mp['l']=mp['l']/2;
+       mp['o']= mp['o']/2;
         int res=INT_MAX;
         for(auto c : mp){
-            if(c.first=='l' or c. first=='o'){
-                res = min(res,c.second/2);
-                continue;
-            }
+         //   if(c.first=='l' or c. first=='o'){
+               // res = min(res,c.second/2);
+               // continue;
+         //   }
             res = min(res,c.second);
         }
        // if(mp['l']<2) return 0;
