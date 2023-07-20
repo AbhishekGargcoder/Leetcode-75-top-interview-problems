@@ -10,7 +10,7 @@ public:
           int mid= l+(h-l)/2;
           if(arr[mid]!=arr[mid-1] and arr[mid]!=arr[mid+1])
               return arr[mid];
-    if(mid%2==1){
+    if(mid&1){
        if(arr[mid]==arr[mid-1])
              l = mid+1;
          else   h =mid-1;
@@ -20,7 +20,7 @@ public:
             l = mid+1;
        else h= mid-1;
     }
-       // if(h>l) return arr[h];
+    
    }
            
    return -1;        
