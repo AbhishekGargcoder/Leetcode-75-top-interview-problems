@@ -52,7 +52,7 @@ class Solution
                prev->next = curr->next;
                //Node* temp= curr;
                delete curr;
-               curr = curr->next;
+               curr = prev->next;
                
                continue;
                
