@@ -50,9 +50,10 @@ class Solution
               hs.insert(curr->data);
            else{
                prev->next = curr->next;
-               Node* temp= curr;
+               //Node* temp= curr;
+               delete curr;
                curr = curr->next;
-               delete temp;
+               
                continue;
                
            }
