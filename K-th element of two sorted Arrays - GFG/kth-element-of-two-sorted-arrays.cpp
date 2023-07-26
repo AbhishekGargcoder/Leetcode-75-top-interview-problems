@@ -8,7 +8,7 @@ class Solution{
     public:
     int kthElement(int arr1[], int arr2[], int n1, int n2, int k)
     {
-        if(n1<n2) return kthElement(arr2,arr1,n2, n1, k);
+     //   if(n1<n2) return kthElement(arr2,arr1,n2, n1, k);
         if(k>(n1+n2))  return -1;
         int i=0, j= n1-1;
         while(i<n2&&j>=0){
