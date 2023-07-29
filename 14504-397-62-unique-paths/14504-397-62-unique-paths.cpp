@@ -11,7 +11,7 @@ public:
         
     }
     int uniquePaths(int m, int n) {
-        dp= vector<vector<int>>(m+1, vector<int>(n+1, -1));
+        dp= vector<vector<int>>(m, vector<int>(n, -1));
         return fun(m-1, n-1);
     }
 };
