@@ -20,7 +20,8 @@ public:
 	    
 	    int dp[n];
 	    fill(dp, dp+n, -1);
-	   return f(arr, n, 0,dp);
+	  f(arr, n, 0,dp);
+	  return dp[0];
 	}
 };
 
