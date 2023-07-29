@@ -9,14 +9,14 @@ public:
          if(i==0&&j==0)
            temp[j]=1;
          else{
-         int up = prev[j];
+         int up = temp[j];
          int left = 0;
         if(j>0)
            left = temp[j-1];
          temp[j]=up+left;}
             
         }
-        prev = temp;
+    
      }
       return temp[n-1];
               
