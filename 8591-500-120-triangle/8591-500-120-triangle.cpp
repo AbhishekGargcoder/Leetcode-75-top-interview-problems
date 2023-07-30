@@ -18,7 +18,7 @@ getMinPath(triangle,i+1,j,m) ;
  }
     int minimumTotal(vector<vector<int>>&triangle) {
         int m = triangle.size();
-        dp= vector<vector<int>>(m,vector<int>(2*m, -1));
+        dp= vector<vector<int>>(m,vector<int>(m, -1));
         return getMinPath(triangle,0,0,m);
     }
 };
