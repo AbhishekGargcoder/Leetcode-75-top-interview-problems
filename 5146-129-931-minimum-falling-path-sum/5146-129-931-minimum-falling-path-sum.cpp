@@ -16,24 +16,26 @@ if(dp[i][j]!=-1) return dp[i][j];
   int minFallingPathSum(vector<vector<int>>&grid) { 
       int n = grid [0].size() ;
       int m = grid.size();
-  vector<vector<int>>dp= vector<vector<int>>(m, vector<int>(n, 0));
-    
+//  vector<vector<int>>dp= vector<vector<int>>(m, vector<int>(n, 0));
+  vector<int>prev(n,0);  
   for(int j=0;j<n;j++)
-         dp[0][j]=grid[0][j];
+         prev[j]=grid[0][j];
   for(int i=1;i<m;i++){
+      vector<int>curr(n, 0);
     for(int j=0;j<n;j++){
-       int up= grid[i][j]+ dp[i-1][j];
+       int up= grid[i][j]+ prev[j];
         int ld, rd;ld=rd= 1e6;
        if(j>0)
-       ld= grid[i][j]+ dp[i-1][j-1];
+       ld= grid[i][j]+prev[j-1];
        if(j<n-1)
-       rd = grid[i][j]+ dp[i-1][j+1];
- dp[i][j]= min(up, min(ld, rd));
+     rd = grid[i][j]+prev[j+1];
+ curr[j]= min(up, min(ld, rd));
       }
+      prev = curr;
    }
-    int maxi=dp[m-1][0];
+    int maxi=prev[0];
    for(int i=1;i<m;i++)
-    maxi= min(maxi,dp[m-1][i]);
+    maxi= min(maxi, prev[i]);
       return maxi;
   /*    int res =1e9;
  for(int i=0;i<n;i++){
