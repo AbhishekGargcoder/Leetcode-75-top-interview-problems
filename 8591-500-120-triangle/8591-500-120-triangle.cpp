@@ -1,24 +1,20 @@
 class Solution {
 public:
-   vector<vector<int>>dp;
-    int getMinPath(vector<vector<int>>&triangle,int i, int j,int m){
-   //  int m= triangle.size();
-   //   if(i>=m) return 0;
-   if(i==m-1) return triangle [i][j];   
-  //   int n = triangle[i].size();
-//if(j>=n) return 0;
-if(dp[i][j]!=-1) return dp[i][j];       
-  int sameIdx=0, rightIdx=0;
-sameIdx =
-getMinPath(triangle,i+1,j,m) ;
-    rightIdx = dp[i][j]= getMinPath(triangle,i+1,j+1,m);
-  
-  return dp[i][j]=min(sameIdx,rightIdx)+triangle [i][j];
-        
- }
-    int minimumTotal(vector<vector<int>>&triangle) {
-        int m = triangle.size();
-        dp= vector<vector<int>>(m,vector<int>(m, -1));
-        return getMinPath(triangle,0,0,m);
+    int minimumTotal(vector<vector<int>>& tri) {
+        int m = tri.size();
+        vector<int>prev(m+1, 0);
+        for(int i=0;i<m;i++)
+          prev[i]= tri[m-1][i];
+        for(int i=m-2;i>=0;i--){
+          vector<int>curr(m,0);
+          for(int j=i;j>=0;j--){
+            int d = prev[j];
+            int dg = prev[j+1];
+            curr[j]= min(d,dg)+tri[i][j];
+          }
+           prev = curr;
+        }
+       return prev[0];
+         
     }
 };
