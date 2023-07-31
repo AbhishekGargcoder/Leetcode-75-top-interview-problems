@@ -8,7 +8,7 @@ public:
   
 if(dp[i1][j1][i2][j2]!=-1)   return dp[i1][j1][i2][j2];
   if(i1==r-1 &&j1==c-1) return grid[i1][j1];
-   if(i2==r-1&&j2==c-1) return grid[i2][j2];
+ //  if(i2==r-1&&j2==c-1) return grid[i2][j2];
       int maxi=0;
 // if(dp[i1][j1][i2][j2]!=-1) return dp[i1][j1][i2][j2];
  if(i1==i2&&j1==j2)
