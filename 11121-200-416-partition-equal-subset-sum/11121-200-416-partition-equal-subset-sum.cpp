@@ -16,8 +16,8 @@ notTake) ;
      
 }
     bool canPartition(vector<int>&arr){
-  int sum=0; 
-        sum=accumulate(arr.begin(),arr.end(),sum);
+ // int sum=
+       int  sum=accumulate(arr.begin(),arr.end(),sum);
         cout<<sum;
       if(sum&1)return false;
  int n= arr.size();
