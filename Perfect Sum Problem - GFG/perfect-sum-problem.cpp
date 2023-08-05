@@ -22,14 +22,39 @@ class Solution{
         
     }
 	public:
-	int perfectSum(int arr[], int n, int sum)
+	int perfectSum(int arr[], int n, int target) 
 	{
-	  dp=vector<vector<int>>(n,vector<int>(sum+1,-1));
-        return f(arr,n-1,sum);
-       // return count;// Your code goes here
+	    int mod = 1e9+7;
+	  dp=vector<vector<int>>(n,vector<int>(target+1,0));
+    //  for(int i=0;i<=target;i++){
+    
+    //   if(arr[0]==0&&target==0) dp[0][0]=2;
+   //   }
+      if(arr[0]==0) dp[0][0]=2;
+      else dp[0][0]=1;
+   
+      if(arr[0]!=0 && arr[0]<=target) dp[0][arr[0]]=1;
+      
+      for(int i=1;i<n;i++){
+          for(int j=0;j<=target;j++){
+              int take =0, notTake=0;
+              notTake= dp[i-1][j];
+              if(arr[i]<=j) 
+                take = dp[i-1][j-arr[i]];
+              dp[i][j] = (take + notTake)%mod;
+          }
+      }
+      return dp[n-1][target];
+       
 	}
+
+
+
 	  
 };
+
+
+
 
 //{ Driver Code Starts.
 int main() 
