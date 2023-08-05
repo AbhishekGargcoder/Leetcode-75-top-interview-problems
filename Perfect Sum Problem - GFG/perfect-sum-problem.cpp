@@ -11,7 +11,6 @@ class Solution{
           if(arr[0]==0&&tgt==0) return 2;
           if(tgt==0 or arr[0]==tgt) return 1;
           return 0;
-         
       }
       if(dp[ind][tgt]!=-1) return dp[ind][tgt];
        int take=0,notTake=0;
