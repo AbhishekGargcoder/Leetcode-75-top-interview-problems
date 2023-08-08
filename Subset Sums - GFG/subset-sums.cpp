@@ -18,7 +18,7 @@ vector<int>res;
     vector<int> subsetSums(vector<int> arr, int n)
     {
           f(n-1,arr, 0);
-          sort(res.begin(),res.end());
+         // sort(res.begin(),res.end());
           return res;
     }
 };
