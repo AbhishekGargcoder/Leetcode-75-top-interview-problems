@@ -22,7 +22,7 @@ class Solution
         map<pair<int,int>,int>m;
         int res=0;
         for(int i=0;i<n;i++){
-           int g = __gcd(num[i],deno[i]);
+           int g = gcd(num[i],deno[i]);
            pair<int, int>fr;
            int x, y;
            x=fr.first= num[i]/g;
