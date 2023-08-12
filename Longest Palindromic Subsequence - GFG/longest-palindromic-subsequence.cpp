@@ -8,38 +8,33 @@ using namespace std;
 // } Driver Code Ends
 //User function Template for C++
 
-
-class Solution{ 
-  public: 
-    int lcs(string a, string b, int n) 
-    { 
-        vector<vector<int>> v(n + 1, vector<int> (n + 1, 0)); 
-        for(int i = 1; i <= n; i++) 
-        { 
-            for(int j = 1; j <= n; j++) 
-            { 
-                if(a[i - 1] == b[j - 1]) 
-                { 
-                    v[i][j] = 1 + v[i - 1][j - 1]; 
-                } 
-                else 
-                { 
-                    v[i][j] = max(v[i - 1][j], v[i][j - 1]); 
-                } 
-            } 
-        } 
-        return v[n][n]; 
-    } 
-    int longestPalinSubseq(string A) { 
-        //code herere 
-        string s = A; 
-        int n = s.size(); 
-        reverse(s.begin(), s.end()); 
-        int x = lcs(A, s, n); 
-        return x; 
-    } 
+class Solution{
+  public:vector<vector<int>>dp;
+ string rev(string str){
+      int l=0, h = str.length()-1;
+      while(l<h)
+        swap(str[l++],str[h--]);
+        return str;
+  }
+//ion to find the length of longest common subsequence in two strings.
+    int lcs(int n, int m, string s1, string s2)
+    {
+        dp= vector<vector<int>>(n+1,vector<int>(m+1,0));
+        for(int i=0;i<=n;i++){
+            for(int j=0;j<=m;j++){
+                if(i==0 or j==0){ dp[i][j]=0; continue;}
+                if(s1[i-1]==s2[j-1])
+                  dp[i][j]= 1+ dp[i-1][j-1];
+                else dp[i][j]= max(dp[i-1][j], dp[i][j-1]);
+                
+            }
+        }
+         return dp[n][m];
+    }
+    int longestPalinSubseq(string s) {
+      return lcs(s.length(),s.length(),s,rev(s));
+    }
 };
-
 
 //{ Driver Code Starts.
 
