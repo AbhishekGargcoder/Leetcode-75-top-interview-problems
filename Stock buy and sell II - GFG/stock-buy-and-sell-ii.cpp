@@ -31,15 +31,20 @@ public:
 
 class Solution {
   public:
-    int stockBuyAndSell(int n, vector<int> &prices) {
-        
-        int buy, sell, profit=0;
-        buy=prices[0],sell=prices[0];
-        for(int i=1;i<n;i++)
-           if(prices[i]>prices[i-1])
-            profit+=prices[i]-prices [i-1];
-        return profit;
-    
+    int stockBuyAndSell(int n, vector<int> &arr) {
+        // code here
+        int cp=arr[0],sp=arr[0],profit=0;//n=arr.size();
+ for(int i=1;i<n;i++){
+   if(arr[i]<cp){
+       cp=arr[i];
+   }
+   else{
+       sp=arr[i]-cp;
+       profit +=sp;
+       cp=arr[i];
+   }
+  }
+     return profit;
     }
 };
 
