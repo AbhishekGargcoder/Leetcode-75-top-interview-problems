@@ -17,8 +17,8 @@ class Solution
             if(windowSum+arr[i] == sum){
                 // cout<<"equal1\n";
                 res[0]= s+1;
-                if(e<s) res[1] = e = s;
-                else res[1] = i; //e
+                // if(e<s) res[1] = e = s;
+             res[1] = i; //e
                 res[1]++;
                 return res;
             }
