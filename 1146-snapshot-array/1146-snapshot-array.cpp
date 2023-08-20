@@ -21,7 +21,7 @@ public:
         if(mp[index].count(snap_id)){
             return mp[index][snap_id];
         }        
-            auto it =  mp[index].upper_bound(snap_id);
+            auto it =  mp[index].lower_bound(snap_id);
         it--;
         return it->second;
     }
