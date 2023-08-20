@@ -30,7 +30,7 @@ public:
 	int lastOcc(int *arr,int n, int x){
 	    int l=0,h=n-1;
 	    while(l<=h){
-	        int mid = l+ (h-l)/2;
+	        int mid = l+ ((h-l)>>1) ;
 	        if(arr[mid]>x)
 	           h = mid-1;
 	        else if(arr[mid]<x)
