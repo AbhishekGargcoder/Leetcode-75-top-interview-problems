@@ -18,13 +18,10 @@ public:
         return id++;
     }
     int get(int index, int snap_id) {
-//         if(mp[index].count(snap_id)){
-//             return mp[index][snap_id];
-//         }        
-//         else{
-            
-//         }
-        auto it =  mp[index].upper_bound(snap_id);
+        if(mp[index].count(snap_id)){
+            return mp[index][snap_id];
+        }        
+            auto it =  mp[index].upper_bound(snap_id);
         it--;
         return it->second;
     }
