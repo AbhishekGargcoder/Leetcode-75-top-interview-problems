@@ -12,7 +12,7 @@ using namespace std;
 class Solution
 {
     void rev(string &s,int l,int h){
-        if(l==h) return;
+        if(l>=h) return;
         swap(s[l],s[h]);
         rev(s,l+1,h-1);
     }
