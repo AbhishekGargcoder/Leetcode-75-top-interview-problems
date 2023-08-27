@@ -11,13 +11,16 @@ using namespace std;
 //User function Template for C++
 class Solution
 {
+    void rev(string &s,int l,int h){
+        if(l==h) return;
+        swap(s[l],s[h]);
+        rev(s,l+1,h-1);
+    }
     public:
     string reverseWord(string s)
     {
-        int l = 0,h = s.length()-1;
-        while(l<h){
-            swap(s[l++],s[h--]);
-        }
+        int n = s.length();
+        rev(s,0,n-1);
         return s;
     }
 };
