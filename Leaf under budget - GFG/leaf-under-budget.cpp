@@ -114,12 +114,12 @@ struct Node
 class Solution
 {
 public:
-    vector<int>leafs;
+    priority_queue<int>pq;
     void trav(Node *root,int cost){
         if(root==NULL)
             return;
         if(!root->left && !root->right){
-            leafs.push_back(cost); return;
+            pq.push(-cost); return;
         }
         trav(root->left,cost+1);
         trav(root->right,cost+1);
@@ -128,16 +128,25 @@ public:
     int getCount(Node *root, int budget)
     {
         trav(root,1);
-        // for(auto leaf : leafs) cout<<leaf<<" ";
-        sort(leafs.begin(),leafs.end());
-        int res = 0;
-        for(int i = 0;i<leafs.size();i++){
-            if(budget >= leafs[i]){
+         int res = 0;
+        while(!pq.empty()){
+             if(budget >= -pq.top()){
                 res++;
-                budget -= leafs[i];
+                budget -= -pq.top();
             }
             else break;
+            // cout<<-pq.top();
+            pq.pop();
         }
+        // sort(leafs.begin(),leafs.end());
+       
+        // for(int i = 0;i<leafs.size();i++){
+        //     if(budget >= leafs[i]){
+        //         res++;
+        //         budget -= leafs[i];
+        //     }
+        //     else break;
+        // }
         // cout<<endl;
         return res;
     }
