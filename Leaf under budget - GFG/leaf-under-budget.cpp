@@ -127,27 +127,28 @@ public:
     }
     int getCount(Node *root, int budget)
     {
-        trav(root,1);
-         int res = 0;
-        while(!pq.empty()){
-             if(budget >= -pq.top()){
-                res++;
-                budget -= -pq.top();
+        queue<Node*>q;
+        q.push(root);
+        int res = 0,cost = 1;
+        bool flag = true;
+        while(!q.empty()){
+            int size = q.size();
+            for(int i = 0;i<size;i++){
+                Node *curr = q.front(); q.pop();
+                if(!curr->left&&!curr->right){
+                    if(budget>= cost){
+                        res++; budget -= cost;
+                    }
+                    else{
+                        flag = false; break;
+                    }
+                }
+                if(!flag) return res;
+                if(curr->left) q.push(curr->left);
+                if(curr->right) q.push(curr->right);
             }
-            else break;
-            // cout<<-pq.top();
-            pq.pop();
+            cost++;
         }
-        // sort(leafs.begin(),leafs.end());
-       
-        // for(int i = 0;i<leafs.size();i++){
-        //     if(budget >= leafs[i]){
-        //         res++;
-        //         budget -= leafs[i];
-        //     }
-        //     else break;
-        // }
-        // cout<<endl;
         return res;
     }
 };
