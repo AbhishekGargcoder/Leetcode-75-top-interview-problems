@@ -25,14 +25,17 @@ public:
         for(auto c: mp) if(c.second >1)return 0;
         int res = 0,k= 1;
         // bool visit[256] = {0};
+        int perm = fact(n-1);
         for(int i =0;i<n;i++){
             // visit[s[i]] = true;
-            int perm = fact(n-k);
+            // int perm = fact(n-k);
             for(int j = i+1;j<n;j++){
                 if(s[j] < s[i]){
                     res = (res + perm) % MOD;
                 }
             }
+            if(n-k)
+            perm = perm/(n-k);
             // cout<<res<<" ";
             // cout<<endl;
             k++;
