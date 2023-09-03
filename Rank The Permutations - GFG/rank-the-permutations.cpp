@@ -24,9 +24,9 @@ public:
             mp[s[i]]++;
         for(auto c: mp) if(c.second >1)return 0;
         int res = 0,k= 1;
-        bool visit[256] = {0};
+        // bool visit[256] = {0};
         for(int i =0;i<n;i++){
-            visit[s[i]] = true;
+            // visit[s[i]] = true;
             for(int j = i+1;j<n;j++){
                 if(s[j] < s[i]){
                     res = (res + fact(n-k)) % MOD;
