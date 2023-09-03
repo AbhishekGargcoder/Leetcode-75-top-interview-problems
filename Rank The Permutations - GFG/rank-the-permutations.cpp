@@ -23,7 +23,7 @@ class Solution{
                     res = (res + perm);
                 }
             }
-            if(n-k!=0)
+            if(i!=n-1)
             perm =(perm/(n-k));
             k++;
         }
