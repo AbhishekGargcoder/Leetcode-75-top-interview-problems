@@ -28,7 +28,7 @@ public:
             hm[curr]->next = hm[curr->next];
             if(hm.count(curr->random))
                 hm[curr]->random =  hm[curr->random];
-            else hm[curr]->random = NULL;
+            // else hm[curr]->random = NULL;
             curr = curr->next;
         }
         return newHead;
