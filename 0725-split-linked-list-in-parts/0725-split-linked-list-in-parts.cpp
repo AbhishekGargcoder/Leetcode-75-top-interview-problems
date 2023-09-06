@@ -20,7 +20,7 @@ public:
         int i  = 0;
         for(int i =0;curr&& i<k;i++,rem--){
             res[i] = curr;
-            for(int j = 0;curr&&j<minNode+(rem>0);j++){
+            for(int j = 0;j<minNode+(rem>0);j++){
                 prev = curr;
                 curr = curr->next;
             }
