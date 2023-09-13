@@ -17,13 +17,15 @@ public:
              
          }
          int s=0;
-          for(int i=0;i<n;i++){
+         for(int i=0;i<n;i++){
               int count =0;
               s = s+9;
-              if(s>sum)
-             for(int i=0;s>sum&&i<9;i++){
-                s--;
-                count++;
+              if(s>sum){
+         //    for(int i=0;s>sum&&i<9;i++){
+          //      s--;
+          //      count++;
+              count = s-sum;
+              s = s - count;
             }
         //    cout<<" s ="<<s;
         //    if(s>sum) return "-1";
