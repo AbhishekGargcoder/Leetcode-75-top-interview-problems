@@ -6,26 +6,30 @@ typedef long long int ll;
 // } Driver Code Ends
 class Solution
 {
-    public: 
-    vector<int>dp;
-    int fun(int *arr,int n){
-      if(n==0) return arr[n];
-      if(n<0) return 0;
-        if(dp[n]!=-1) return dp[n];
-      int take = arr[n] + fun(arr,n-2);
-      int notTake = fun(arr, n-1);
-      return dp[n]= max(take, notTake);
-        
- }
-    int rob(vector<int>&arr) {
-
+    public:
+    vector<vector<int>>dp;
+    int n;
+    int f(int i,int p,int *arr){
+        if(i==n) return 0;
+        if(i==n-1){
+            if(p==0){
+                return arr[i];
+            }
+            return 0;
+        }
+        if(dp[i][p]!=-1) return dp[i][p];
+        int loot=0, notLoot=0;
+        if(p==0 || p==2) 
+        loot = arr[i] + f(i+1,1,arr);
+        notLoot = f(i+1,0,arr);
+        return dp[i][p]= max(loot,notLoot);
     }
     //Function to find the maximum money the thief can get.
     int FindMaxSum(int arr[], int n)
     {
-        // Your code here        int n = arr.size();
-       dp = vector<int>(n, -1);
-       return fun(arr, n-1);
+        this->n=n;
+        dp=vector<vector<int>>(n+1,vector<int>(3,-1));
+        return f(0,2,arr);
     }
 };
 
