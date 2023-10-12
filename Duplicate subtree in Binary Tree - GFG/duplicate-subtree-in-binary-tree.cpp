@@ -90,22 +90,22 @@ struct Node
 
 class Solution {
   public:
-    map<string, int>mp;
- string solve(Node* root){
-        if(!root) return "$";
-        string s="";
-        if(!root->right and !root->left){
-            s+=to_string(root->data);
-            return s;
-        }
-        s+=to_string(root->data);
-        s+='/';
-        s+=solve(root->left);
-        s+=solve(root->right);
-        mp[s]++;
-        return s;
+  map<string,int>mp;
+  string solve(Node * root){
+      string s = "";
+      if(!root) { return "$";}
+      if(!root->left && !root->right){
+          s+= to_string(root->data);
+          return s;
+      }
+      s += solve(root->left);
+      s += to_string(root->data);
+      s += solve(root->right);
+      mp[s]++;
+      return s;
     }
     int dupSub(Node *root) {
+        string s = "";
         solve(root);
         for(auto it:mp)
         if(it.second>=2) return true;
