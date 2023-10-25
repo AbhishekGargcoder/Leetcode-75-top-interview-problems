@@ -10,22 +10,24 @@ using namespace std;
 class Solution{
 public:
 vector<vector<int>>dp;
-    int f(int idx,int w,int *val, int *wt){
-        if(idx==0){
-           if(wt[idx]<=w) return (w/wt[0])*val[0];
-           return 0;
-        }
-        if(w==0) return 0;
-        if(dp[idx][w]!=-1) return dp[idx][w];
-        int notTake=0,take=-1e9;
-        notTake= 0+ f(idx-1,w,val, wt);
-    if(wt[idx]<=w) take = val[idx] + f(idx,w-wt[idx],val, wt);
-        return dp[idx][w]=max(take, notTake);
+    int mxWt, s;
+    int f(int i,int w,int *val,int *wt){
+        if(i==s) return 0;
+     //   cout<<28;
+        int pick=0, notPick =0;
+        if(dp[i][w]!=-1) return dp[i][w];
+        notPick = f(i+1, w,val, wt);
+        if(mxWt >=w+wt[i] ) 
+        pick =val[i]+ f(i,w+wt[i],val, wt);
+   //     cout<<pick<<" " ;
+        return dp[i][w]= max(pick,notPick);
     }
-    int knapSack(int n, int w, int val[], int wt[])
+    int knapSack(int n, int w,int val[], int wt[])
     {
-        dp= vector<vector<int>>(n,vector<int>(w+1,-1));
-       return f(n-1,w,val,wt);
+        mxWt=w;
+        this->s=n;
+        dp=vector<vector<int>>(n+1, vector<int>(w+1,-1)) ;
+        return f(0,0, val, wt);
     }
 };
 
