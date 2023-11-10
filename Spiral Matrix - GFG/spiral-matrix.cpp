@@ -10,32 +10,42 @@ class Solution{
     {
                 int top,down,left,right,r = matrix.size(),c = matrix[0].size();
         top = 0,down = r-1,left = 0,right= c-1;
-        vector<int>ans;
+        // vector<int>ans;
+        int cnt = 0;
         while(left<=right && top<=down){
             for(int i = left;i<=right;i++){
                 // cout<<matrix[top][i]<<" ";
-                ans.push_back(matrix[top][i]);
+                // ans.push_back(matrix[top][i]);
+                cnt++;if(cnt==k) return matrix[top][i];
+                
             }
         
             top++;
             if(top>down) break;
             for(int i = top;i<=down;i++){
                 // cout<<matrix[i][right]<<" ";                     
-                ans.push_back(matrix[i][right]);
+                // ans.push_back(matrix[i][right]);
+                cnt++;if(cnt==k) return matrix[i][right];
+                
         } 
             right--;
             for(int i = right;i>=left;i--){
-            ans.push_back(matrix[down][i]);
+            // ans.push_back(matrix[down][i]);
+            cnt++;if(cnt==k) return matrix[down][i];
+            
         }  
             down--;
             if(left>right) break;
             for(int i = down;i>=top;i--){
                 // cout<<matrix[i][left]<<" ";
-            ans.push_back(matrix[i][left]);
+            // ans.push_back(matrix[i][left]);
+            cnt++;
+            if(cnt==k) return matrix[i][left];
+            
         }
             left++;
         }
-        return ans[k-1];
+        return -1;
     }
 
 };
